@@ -69,4 +69,4 @@ class KiloGrammUnit(PhysicalUnit):
 
 kg = KiloGrammUnit()
 g = KiloGrammUnit(1e-3)
-T = KiloGrammUnit(1+3)
+T = KiloGrammUnit(1e+3)
