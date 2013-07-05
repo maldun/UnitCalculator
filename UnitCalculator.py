@@ -27,12 +27,12 @@ class PhysicalUnit(object):
     Base class for physical units.
     """
 
-    def __init__(self):
+    def __init__(self,factor = 1.0):
         """
         Constructor for deriving SI units.
         Factor is initiated with 1.
         """
-        self.factor = 1.0
+        self.factor = factor
 
     def _callHelper(self,other,INSTANCE):
         """
@@ -60,28 +60,10 @@ class MeterUnit(PhysicalUnit):
         """
         return self._callHelper(other,MeterUnit)
 
-class DeciMeterUnit(MeterUnit):
-
-    def __init__(self):
-
-        self.factor = 1e-1
-
-class CentiMeterUnit(MeterUnit):
-
-    def __init__(self):
-
-        self.factor = 1e-2
-
-class MiliMeterUnit(MeterUnit):
-
-    def __init__(self):
-
-        self.factor = 1e-3
-
 m = MeterUnit()
-dm = DeciMeterUnit()
-cm = CentiMeterUnit()
-mm = MiliMeterUnit()
+dm = MeterUnit(1e-1)
+cm = MeterUnit(1e-2)
+mm = MeterUnit(1e-3)
 
 # Mass Units
 
@@ -99,18 +81,7 @@ class KiloGrammUnit(PhysicalUnit):
         """
         return self._callHelper(other,KiloGrammUnit)
 
-class GrammUnit(KiloGrammUnit):
-
-    def __init__(self):
-
-        self.factor = 1e-3
-
-class TonUnit(KiloGrammUnit):
-
-    def __init__(self):
-
-        self.factor = 1e+3
 
 kg = KiloGrammUnit()
-g = GrammUnit()
-T = TonUnit()
+g = KiloGrammUnit(1e-3)
+T = KiloGrammUnit(1+3)
