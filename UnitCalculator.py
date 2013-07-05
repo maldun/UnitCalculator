@@ -34,12 +34,13 @@ class PhysicalUnit(object):
         """
         self.factor = factor
 
-    def _callHelper(self,other,INSTANCE):
+    def __call__(self,other = None):
         """
-        Help function for __call__ methods.
-        Helps avoiding copy & paste tasks.
+        Call method that can be passed on
         """
-        if isinstance(other,INSTANCE):
+        if other is None: # SelfConversion
+            return 1.0
+        elif isinstance(other,type(self)):
             return self.factor/other.factor
         else:
             raise ValueError("Error: Not the correct units!")
@@ -50,15 +51,7 @@ class MeterUnit(PhysicalUnit):
     """
     Unit for distance in meter 
     """
-    def __call__(self,other):
-        """
-        Call function for Conversion
-        EXAMPLE::
-
-            >>> m(cm) = 100.0
-            
-        """
-        return self._callHelper(other,MeterUnit)
+    pass 
 
 m = MeterUnit()
 dm = MeterUnit(1e-1)
@@ -71,15 +64,7 @@ class KiloGrammUnit(PhysicalUnit):
     """
     Unit for distance in meter 
     """
-    def __call__(self,other):
-        """
-        Call function for Conversion
-        EXAMPLE::
-
-            >>> kg(g) = 1000.0
-            
-        """
-        return self._callHelper(other,KiloGrammUnit)
+    pass
 
 
 kg = KiloGrammUnit()
