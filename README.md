@@ -5,6 +5,42 @@ Simple Python Module for Unit Conversion
 This Module is distributet under MIT License and
 should be used freely.
 
+Installation
+============
+
+Change into your desired directory (e.g. your home directory) and
+execute
+
+git clone https://github.com/maldun/UnitCalculator.git
+
+Usage
+=====
+
+We assume here that the module is installed in the home directory.
+In Python:
+
+>>> import os
+>>> os.chdir(os.path.expanduser("~")) # Assuming that we installed it in home directory
+>>> from UnitCalculator import *
+>>> m(mm) # Convert m to mm
+1000.0
+>>> auto_converter(MM_TON) # Start Auto Conversion from m and kg to mm and T
+>>> m() # Now converts m to mm by default
+1000.0
+>>> auto_converter(SI) # Default
+>>> m()
+1.0
+>>> 1000*mm() # 1000mm to SI unit m
+1.0
+
+Usage in Code Aster
+===================
+
+import sys
+sys.path.append(os.path.expanduser("~")) # Assuming that we are in home dir
+from UnitCalculator import *
+
+
 License
 =======
 
