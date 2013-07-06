@@ -26,7 +26,7 @@ In (I)Python:
 
 In [1]: import os
 
-In [2]: os.chdir(os.path.expanduser("~/prog/Python"))
+In [2]: os.chdir(os.path.expanduser("~"))
 
 In [3]: from UnitCalculator import *
 
