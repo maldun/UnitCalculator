@@ -5,6 +5,11 @@ Simple Python Module for Unit Conversion
 This Module is distributet under MIT License and
 should be used freely.
 
+Version
+=======
+
+Version 0.1
+
 Installation
 ============
 
