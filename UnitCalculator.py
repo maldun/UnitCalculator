@@ -89,3 +89,46 @@ T = KiloGrammUnit(1e+3)
 
 Pa = PascalUnit()
 MPa = PascalUnit(1e+6)
+
+# Class for autoconversion
+
+# Unit Systems
+
+class UnitSystem(object):
+
+    def getDistance(self):
+        return self._distance
+
+    def getMass(self):
+        return self._mass
+
+    def getPressure(self):
+        return self._pressure
+
+    def getForce(self):
+        return self._force
+
+class SystemeInternationale(UnitSystem):
+    """
+    Container class for SI units
+    """
+    def __init__(self):
+
+        self._distance = m
+        self._mass = kg
+        self._pressure = Pa 
+        self._force = N
+
+class MilimiterAndTon(UnitSystem):
+
+        """
+    Container class for SI units
+    with distance in mm and
+    mass in tons
+    """
+    def __init__(self):
+
+        self._distance = mm
+        self._mass = T
+        self._pressure = MPa 
+        self._force = N
