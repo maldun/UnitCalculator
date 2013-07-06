@@ -39,8 +39,9 @@ class PhysicalUnit(object):
         Call method that can be passed on
         """
         if other is None: # SelfConversion
-            return 1.0
-        elif isinstance(other,type(self)):
+            other = auto_converter.getCorrectUnit(self)
+
+        if isinstance(other,type(self)):
             return self.factor/other.factor
         else:
             raise ValueError("Error: Not the correct units!")
@@ -90,8 +91,7 @@ T = KiloGrammUnit(1e+3)
 Pa = PascalUnit()
 MPa = PascalUnit(1e+6)
 
-# Class for autoconversion
-
+N = NewtonUnit()
 # Unit Systems
 
 class UnitSystem(object):
@@ -113,22 +113,69 @@ class SystemeInternationale(UnitSystem):
     Container class for SI units
     """
     def __init__(self):
-
+        
         self._distance = m
         self._mass = kg
         self._pressure = Pa 
         self._force = N
 
 class MilimiterAndTon(UnitSystem):
-
-        """
+    """
     Container class for SI units
     with distance in mm and
     mass in tons
     """
     def __init__(self):
-
+        
         self._distance = mm
         self._mass = T
         self._pressure = MPa 
         self._force = N
+
+# Class for autoconversion
+
+class UnitAutoConverter(object):
+    """
+    Class for autoconversion of unit systems
+    """
+
+    def __init__(self,unit_system):
+        """
+        Init method stores the
+        unit system of the choice
+        """
+        self._unitSystem = unit_system
+
+    def setUnitSystem(self,unit_system):
+        """
+        Resets the unit system
+        """
+        self._unitSystem = unit_system
+
+    def __call__(self,unit_system):
+        """
+        Call method changes unit system 
+        """
+        self.setUnitSystem(unit_system)
+
+    def getCorrectUnit(self,unit):
+        """
+        gets a object of unit type
+        and returns the corresponding
+        unit of the unit system
+        """
+        if isinstance(unit,MeterUnit):
+            return self._unitSystem.getDistance()
+        elif isinstance(unit,KiloGrammUnit):
+            return self._unitSystem.getMass()
+        elif isinstance(unit,PascalUnit):
+            return self._unitSystem.getPressure()
+        elif isinstance(unit,NewtonUnit):
+            return self._unitSystem.getForce()
+        else:
+            raise ValueError("Error: Not a valid unit!")
+    
+SI = SystemeInternationale()
+MM_TON = MilimiterAndTon()
+
+auto_converter = UnitAutoConverter(SI)
