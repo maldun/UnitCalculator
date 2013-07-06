@@ -17,27 +17,40 @@ Usage
 =====
 
 We assume here that the module is installed in the home directory.
-In Python:
+In (I)Python:
 
->>> import os
->>> os.chdir(os.path.expanduser("~")) # Assuming that we installed it in home directory
->>> from UnitCalculator import *
->>> m(mm) # Convert m to mm
-1000.0
->>> auto_converter(MM_TON) # Start Auto Conversion from m and kg to mm and T
->>> m() # Now converts m to mm by default
-1000.0
->>> auto_converter(SI) # Default
->>> m()
-1.0
->>> 1000*mm() # 1000mm to SI unit m
-1.0
+In [1]: import os
+
+In [2]: os.chdir(os.path.expanduser("~/prog/Python"))
+
+In [3]: from UnitCalculator import *
+
+In [4]: kg() # Default
+Out[4]: 1.0
+
+In [5]: kg(T) # Convert kg to Ton
+Out[5]: 0.001
+
+In [6]: auto_converter(MM_TON) # Start automatic conversion to mm and T system
+
+In [7]: kg()
+Out[7]: 0.001
+
+In [8]: auto_converter(SI) # Convert to SI
+
+In [9]: 1000*mm() # Convert 1000mm to SI m
+Out[9]: 1.0
+
 
 Usage in Code Aster
 ===================
 
+Add to your .comm file (Assuming the module is installed in home):
+
 import sys
-sys.path.append(os.path.expanduser("~")) # Assuming that we are in home dir
+
+sys.path.append(os.path.expanduser("~"))
+
 from UnitCalculator import *
 
 
