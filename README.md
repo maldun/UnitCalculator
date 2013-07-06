@@ -51,6 +51,9 @@ In [9]: 1000*mm() # Convert 1000mm to SI m
 Out[9]: 1.0
 
 
+In fact the commands kg(), kg(T), m() etc. only return the conversion factors between two units,
+so don't forget the multiplication symbol!
+
 Usage in Code Aster
 ===================
 
