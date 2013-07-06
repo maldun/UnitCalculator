@@ -69,7 +69,14 @@ class PascalUnit(PhysicalUnit):
     """
     pass
 
-# Class for autoconversion
+# Class for Force
+
+class NewtonUnit(PhysicalUnit):
+    """
+    Unit for force in Newton 
+    """
+    pass
+
 
 m = MeterUnit()
 dm = MeterUnit(1e-1)
