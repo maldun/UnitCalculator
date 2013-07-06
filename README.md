@@ -31,19 +31,23 @@ In [2]: os.chdir(os.path.expanduser("~"))
 In [3]: from UnitCalculator import *
 
 In [4]: kg() # Default
+
 Out[4]: 1.0
 
 In [5]: kg(T) # Convert kg to Ton
+
 Out[5]: 0.001
 
 In [6]: auto_converter(MM_TON) # Start automatic conversion to mm and T system
 
 In [7]: kg()
+
 Out[7]: 0.001
 
 In [8]: auto_converter(SI) # Convert to SI
 
 In [9]: 1000*mm() # Convert 1000mm to SI m
+
 Out[9]: 1.0
 
 
