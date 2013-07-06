@@ -50,6 +50,13 @@ In [9]: 1000*mm() # Convert 1000mm to SI m
 
 Out[9]: 1.0
 
+In [10]: auto_converter(MM_TON) 
+
+In [11]: 8050*(kg()/m()**3) # Converts density of steel from kg/m^3 to T/mm^3
+
+Out[11]: 8.05e-09
+
+
 
 In fact the commands kg(), kg(T), m() etc. only return the conversion factors between two units,
 so don't forget the multiplication symbol!
