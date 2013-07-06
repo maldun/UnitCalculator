@@ -53,11 +53,6 @@ class MeterUnit(PhysicalUnit):
     """
     pass 
 
-m = MeterUnit()
-dm = MeterUnit(1e-1)
-cm = MeterUnit(1e-2)
-mm = MeterUnit(1e-3)
-
 # Mass Units
 
 class KiloGrammUnit(PhysicalUnit):
@@ -66,7 +61,24 @@ class KiloGrammUnit(PhysicalUnit):
     """
     pass
 
+# Pressure Units
+
+class PascalUnit(PhysicalUnit):
+    """
+    Unit for pressure in Pascal 
+    """
+    pass
+
+# Class for autoconversion
+
+m = MeterUnit()
+dm = MeterUnit(1e-1)
+cm = MeterUnit(1e-2)
+mm = MeterUnit(1e-3)
 
 kg = KiloGrammUnit()
 g = KiloGrammUnit(1e-3)
 T = KiloGrammUnit(1e+3)
+
+Pa = PascalUnit()
+MPa = PascalUnit(1e+6)
