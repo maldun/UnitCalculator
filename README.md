@@ -38,7 +38,7 @@ In [5]: kg(T) # Convert kg to Ton
 
 Out[5]: 0.001
 
-In [6]: auto_converter(MM_TON) # Start automatic conversion to mm and T system
+In [6]: auto_converter(mmNS) # Start automatic conversion to mm and T system
 
 In [7]: kg()
 
@@ -50,7 +50,7 @@ In [9]: 1000*mm() # Convert 1000mm to SI m
 
 Out[9]: 1.0
 
-In [10]: auto_converter(MM_TON) 
+In [10]: auto_converter(mmNS) 
 
 In [11]: 8050*(kg()/m()**3) # Converts density of steel from kg/m^3 to T/mm^3
 
