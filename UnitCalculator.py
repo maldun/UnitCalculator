@@ -129,6 +129,7 @@ Pa = PascalUnit()
 MPa = PascalUnit(1e+6)
 
 # force
+kN = NewtonUnit(1e+3)
 N = NewtonUnit()
 
 # time

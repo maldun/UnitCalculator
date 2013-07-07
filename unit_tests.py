@@ -32,12 +32,51 @@ class UnitTester(object):
               m(m) == 1.0,
               m(dm) == 1e-1,
               m(cm) == 1e-2,
-              m(mm) == 1e-3)
+              m(mm) == 1e-3,
+              dm(km) == 1e-4,
+              dm(m) == 1e-1,
+              dm(dm) == 1.0,
+              dm(cm) == 1e+1,
+              dm(mm) == 1e+2,
+              cm(km) == 1e-5,
+              cm(m) == 1e-2,
+              cm(dm) == 1e-1,
+              cm(cm) == 1e+0,
+              cm(mm) == 1e+1,
+              mm(km) == 1e-6,
+              mm(m) == 1e-3,
+              mm(dm) == 1e-2,
+              mm(cm) == 1e-1,
+              mm(mm) == 1e+0
+              )
+
+    def testPressureUnits(self):
+        
+        from UnitCalculator import Pa, MPa
+
+        print("Test pressure units: ",
+              Pa(Pa) == 1.0,
+              MPa(MPa) == 1.0,
+              MPa(Pa) == 1e+3,
+              Pa(MPa) == 1e-3)
+
+    def testForceUnits(self):
+
+        from UnitCalculator import kN, N
+
+        print("Test force units: ",
+              kN(kN) == 1.0,
+              N(N) == 1.0,
+              kN(N) == 1e+3,
+              N(kN) == 1e-3)
 
     def __init__(self):
 
         self.testMetricUnits()
         self.testMassUnits()
+        self.testPressureUnits()
+        self.testForceUnits()
+        
         
 
 UnitTester()
