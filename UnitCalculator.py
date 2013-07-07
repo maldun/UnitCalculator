@@ -27,13 +27,12 @@ class PhysicalUnit(object):
     Base class for physical units.
     """
 
-    def __init__(self,factor = 1.0, translation = 0.0):
+    def __init__(self,factor = 1.0):
         """
         Constructor for deriving SI units.
         Factor is initiated with 1.
         """
         self.factor = factor
-        self.translation = translation
 
     def __call__(self,other = None):
         """
@@ -43,8 +42,7 @@ class PhysicalUnit(object):
             other = auto_converter.getCorrectUnit(self)
 
         if isinstance(other,type(self)):
-            return self.factor/other.factor + \
-              (other.translation - self.translation)
+            return self.factor/other.factor
         else:
             raise ValueError("Error: Not the correct units!")
 
@@ -134,8 +132,8 @@ N = NewtonUnit()
 
 # time
 sec = SecondUnit()
-minute = SecondUnit(1/60.)
-hours = SecondUnit(1/(60.**2)) 
+minute = SecondUnit(60.)
+hours = SecondUnit((60.**2)) 
 
 # radiant
 from math import pi
@@ -144,7 +142,7 @@ deg = RadiantUnit(pi/180.)
 
 # temperature
 degK = KelvinUnit()
-degC = KelvinUnit(1.0,273.15) 
+degC = KelvinUnit(1.0) # still to do! 
 
 # power
 W = WattUnit()
