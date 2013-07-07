@@ -27,12 +27,13 @@ class PhysicalUnit(object):
     Base class for physical units.
     """
 
-    def __init__(self,factor = 1.0):
+    def __init__(self,factor = 1.0, translation = 0.0):
         """
         Constructor for deriving SI units.
         Factor is initiated with 1.
         """
         self.factor = factor
+        self.translation = translation
 
     def __call__(self,other = None):
         """
@@ -42,7 +43,8 @@ class PhysicalUnit(object):
             other = auto_converter.getCorrectUnit(self)
 
         if isinstance(other,type(self)):
-            return self.factor/other.factor
+            return self.factor/other.factor + \
+              (other.translation - self.translation)
         else:
             raise ValueError("Error: Not the correct units!")
 
@@ -78,6 +80,23 @@ class NewtonUnit(PhysicalUnit):
     """
     pass
 
+class SecondUnit(PhysicalUnit):
+    """
+    Unit for time in secons 
+    """
+    pass
+
+class RadiantUnit(PhysicalUnit):
+    """
+    Unit for radiants 
+    """
+    pass
+
+class CelsiusUnit(PhysicalUnit):
+    """
+    Unit for celsius degree
+    """
+    pass
 
 m = MeterUnit()
 dm = MeterUnit(1e-1)
@@ -92,10 +111,14 @@ Pa = PascalUnit()
 MPa = PascalUnit(1e+6)
 
 N = NewtonUnit()
+
+
 # Unit Systems
 
 class UnitSystem(object):
-
+    """
+    Basis container class for unit systems
+    """
     def getDistance(self):
         return self._distance
 
@@ -175,7 +198,8 @@ class UnitAutoConverter(object):
         else:
             raise ValueError("Error: Not a valid unit!")
     
-SI = SystemeInternationale()
-MM_TON = MilimiterAndTon()
+MKS = SystemeInternationale()
+mmNS = MilimiterAndTon()
 
-auto_converter = UnitAutoConverter(SI)
+auto_converter = UnitAutoConverter(MKS)
+
