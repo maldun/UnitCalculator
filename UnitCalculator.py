@@ -92,11 +92,24 @@ class RadiantUnit(PhysicalUnit):
     """
     pass
 
-class CelsiusUnit(PhysicalUnit):
+class KelvinUnit(PhysicalUnit):
     """
     Unit for celsius degree
     """
     pass
+
+
+class WattUnit(PhysicalUnit):
+    """
+    Unit for power in Watt 
+    """
+    pass
+
+class JouleUnit(PhysicalUnit):
+    """
+    Unit for energy in Joule 
+    """
+
 
 m = MeterUnit()
 dm = MeterUnit(1e-1)
@@ -112,7 +125,9 @@ MPa = PascalUnit(1e+6)
 
 N = NewtonUnit()
 
-
+sec = SecondUnit()
+minute = SecondUnit(1/60.)
+hours = = SecondUnit(1/(60.**2)) 
 # Unit Systems
 
 class UnitSystem(object):
