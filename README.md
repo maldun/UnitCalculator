@@ -5,6 +5,74 @@ Simple Python Module for Unit Conversion
 This Module is distributet under MIT License and
 should be used freely.
 
+Version
+=======
+
+Version 0.1
+
+Installation
+============
+
+Change into your desired directory (e.g. your home directory) and
+execute
+
+git clone https://github.com/maldun/UnitCalculator.git
+
+Usage
+=====
+
+We assume here that the module is installed in the home directory.
+In (I)Python:
+
+In [1]: import os
+
+In [2]: os.chdir(os.path.expanduser("~"))
+
+In [3]: from UnitCalculator import *
+
+In [4]: kg() # Default
+
+Out[4]: 1.0
+
+In [5]: kg(T) # Convert kg to Ton
+
+Out[5]: 0.001
+
+In [6]: auto_converter(MM_TON) # Start automatic conversion to mm and T system
+
+In [7]: kg()
+
+Out[7]: 0.001
+
+In [8]: auto_converter(SI) # Convert to SI
+
+In [9]: 1000*mm() # Convert 1000mm to SI m
+
+Out[9]: 1.0
+
+In [10]: auto_converter(MM_TON) 
+
+In [11]: 8050*(kg()/m()**3) # Converts density of steel from kg/m^3 to T/mm^3
+
+Out[11]: 8.05e-09
+
+
+
+In fact the commands kg(), kg(T), m() etc. only return the conversion factors between two units,
+so don't forget the multiplication symbol!
+
+Usage in Code Aster
+===================
+
+Add to your .comm file (Assuming the module is installed in home):
+
+import sys
+
+sys.path.append(os.path.expanduser("~"))
+
+from UnitCalculator import *
+
+
 License
 =======
 
