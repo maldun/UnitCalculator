@@ -94,7 +94,7 @@ class RadiantUnit(PhysicalUnit):
 
 class KelvinUnit(PhysicalUnit):
     """
-    Unit for celsius degree
+    Unit for temperature in Kelvin degree
     """
     pass
 
@@ -110,24 +110,51 @@ class JouleUnit(PhysicalUnit):
     Unit for energy in Joule 
     """
 
+# declare units
 
+# metric
+km = MeterUnit(1e+3)
 m = MeterUnit()
 dm = MeterUnit(1e-1)
 cm = MeterUnit(1e-2)
 mm = MeterUnit(1e-3)
 
+# mass 
 kg = KiloGrammUnit()
 g = KiloGrammUnit(1e-3)
 T = KiloGrammUnit(1e+3)
 
+# pressure
 Pa = PascalUnit()
 MPa = PascalUnit(1e+6)
 
+# force
 N = NewtonUnit()
 
+# time
 sec = SecondUnit()
 minute = SecondUnit(1/60.)
 hours = = SecondUnit(1/(60.**2)) 
+
+# radiant
+from math import pi
+rad = RadiantUnit()
+deg = RadiantUnit(pi/180.)
+
+# temperature
+degK = KelvinUnit()
+degC = KelvinUnit(1.0,273.15) 
+
+# power
+W = WattUnit()
+mW = WattUnit(1e-3)
+
+# energy
+J = JouleUnit()
+mJ = JouleUnit(1e-3)
+
+
+
 # Unit Systems
 
 class UnitSystem(object):
@@ -146,6 +173,21 @@ class UnitSystem(object):
     def getForce(self):
         return self._force
 
+    def getTime(self):
+        return self._time
+
+    def getRadiant(self):
+        return self._radiant
+
+    def getTemperature(self):
+        return self._temperature
+
+    def getPower(self):
+        return self._power
+
+    def getEnergy(self):
+        return self._energy
+
 class SystemeInternationale(UnitSystem):
     """
     Container class for SI units
@@ -156,6 +198,30 @@ class SystemeInternationale(UnitSystem):
         self._mass = kg
         self._pressure = Pa 
         self._force = N
+        self._time = sec
+        self._radiant = rad
+        self._temperature = degK
+        self._power = W
+        self._energy = J
+
+class MeterKilogrammSec(UnitSystem):
+    """
+    Container class for SI units 
+    in Meter Kilogramm and Seconds,
+    but with Degree in Celsius
+    """
+    def __init__(self):
+        
+        self._distance = m
+        self._mass = kg
+        self._pressure = Pa 
+        self._force = N
+        self._time = sec
+        self._radiant = rad
+        self._temperature = degC
+        self._power = W
+        self._energy = J
+
 
 class MilimiterAndTon(UnitSystem):
     """
@@ -169,6 +235,11 @@ class MilimiterAndTon(UnitSystem):
         self._mass = T
         self._pressure = MPa 
         self._force = N
+        self._time = sec
+        self._radiant = rad
+        self._temperature = degC
+        self._power = mW
+        self._energy = mJ
 
 # Class for autoconversion
 
@@ -210,11 +281,22 @@ class UnitAutoConverter(object):
             return self._unitSystem.getPressure()
         elif isinstance(unit,NewtonUnit):
             return self._unitSystem.getForce()
+        elif isinstance(unit,SecondUnit):
+            return self._unitSystem.getTime()
+        elif isinstance(unit,RadiantUnit):
+            return self._unitSystem.getRadiant()
+        elif isinstance(unit,KelvinUnit):
+            return self._unitSystem.getTemperature()
+        elif isinstance(unit,WattUnit):
+            return self._unitSystem.getPower()
+        elif isinstance(unit,JouleUnit):
+            return self._unitSystem.getEnergy()
         else:
             raise ValueError("Error: Not a valid unit!")
     
-MKS = SystemeInternationale()
+SI = SystemeInternationale()
+MKS = MeterKilogrammSec()
 mmNS = MilimiterAndTon()
 
-auto_converter = UnitAutoConverter(MKS)
+auto_converter = UnitAutoConverter(MKS) # Default autoconversion
 
