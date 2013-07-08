@@ -108,6 +108,8 @@ class UnitTester(object):
               degK(degC) == 1.0,
               degC(degC) == 1.0,
               degK(degK) == 1.0,
+              degK.convertWithOrigin(0.0,degK) == 0,
+              degK.convertWithOrigin(0.0,degC) == -273.15
               )
 
     def testPowerUnits(self):

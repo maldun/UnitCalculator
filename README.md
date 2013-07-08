@@ -8,7 +8,7 @@ should be used freely.
 Version
 =======
 
-Version 0.1
+Version 0.2
 
 Installation
 ============
@@ -56,7 +56,9 @@ In [11]: 8050*(kg()/m()**3) # Converts density of steel from kg/m^3 to T/mm^3
 
 Out[11]: 8.05e-09
 
+In [12]: N/m**2 # Since Version 0.2 direct algebra use is also supported
 
+Out[12]: 1e-06
 
 In fact the commands kg(), kg(T), m() etc. only return the conversion factors between two units,
 so don't forget the multiplication symbol!

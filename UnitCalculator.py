@@ -46,6 +46,48 @@ class PhysicalUnit(object):
         else:
             raise ValueError("Error: Not the correct units!")
 
+    def __mul__(self,other):
+        """
+        Overload multiplication to enable unit algebra. 
+        """
+        if isinstance(other,PhysicalUnit):
+            correct = auto_converter.getCorrectUnit(other)
+            other =  other.factor/correct.factor
+        
+        correct = auto_converter.getCorrectUnit(self)
+        return other*(self.factor/correct.factor)
+
+    def __rmul__(self,other):
+        """
+        Overload multiplication to enable unit algebra. 
+        """        
+        correct = auto_converter.getCorrectUnit(self)
+        return other*(self.factor/correct.factor)
+
+
+    def __div__(self,other):
+        """
+        Overload division to enable unit algebra. 
+        """
+        if isinstance(other,PhysicalUnit):
+            correct = auto_converter.getCorrectUnit(other)
+            other =  (other.factor/correct.factor)
+        
+        correct = auto_converter.getCorrectUnit(self)
+        return (self.factor/correct.factor)/other 
+
+    def __rdiv__(self,other):
+        """
+        Overload division to enable unit algebra. 
+        """        
+        correct = auto_converter.getCorrectUnit(self)
+        return (self.factor/correct.factor)/other
+
+    def __pow__(self,power):
+        correct = auto_converter.getCorrectUnit(self)
+        return (self.factor/correct.factor)**power
+
+
 # Distance Units
 
 class MeterUnit(PhysicalUnit):
@@ -94,8 +136,18 @@ class KelvinUnit(PhysicalUnit):
     """
     Unit for temperature in Kelvin degree
     """
-    pass
+    def __init__(self,factor=1.0,translation=0.0):        
+        
+        self.factor = factor
+        self.translation = translation
 
+
+    def convertWithOrigin(self,to_convert, other_unit = None):
+
+        if other_unit is None:
+            other_unit = auto_converter.getCorrectUnit(self)
+
+        return to_convert*(self.factor/other_unit.factor)+(self.translation - other_unit.translation)
 
 class WattUnit(PhysicalUnit):
     """
@@ -142,7 +194,7 @@ grad = RadiantUnit(pi/180.)
 
 # temperature
 degK = KelvinUnit()
-degC = KelvinUnit(1.0) # still to do! 
+degC = KelvinUnit(1.0,273.15) # still to do! 
 
 # power
 W = WattUnit()
