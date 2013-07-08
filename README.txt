@@ -93,8 +93,7 @@ sys.path.append(os.path.expanduser("~"))
 
 from UnitCalculator import *
 
-auto_converter(MKS)
-print 2.1e+5*Mpa
+auto_converter(mmNS)
 
 DEBUT();
 
