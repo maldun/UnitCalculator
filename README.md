@@ -62,6 +62,11 @@ Out[12]: 1e-06
 
 In [13]: gramm = KiloGrammUnit(1e-3) # Easy (re)definition of units
 
+In [14]: 8050*(kg/m**3) # Converts density of steel from kg/m^3 to T/mm^3 since v0.2
+
+Out[14]: 8.05e-09
+
+
 
 In fact the commands kg(), kg(T), m() etc. only return the conversion factors between two units,
 so don't forget the multiplication symbol!
