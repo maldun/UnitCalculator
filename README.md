@@ -82,6 +82,30 @@ sys.path.append(os.path.expanduser("~"))
 
 from UnitCalculator import *
 
+Example in .comm file
+=====================
+
+import sys
+
+# Assuming module is in home directory
+
+sys.path.append(os.path.expanduser("~"))
+
+from UnitCalculator import *
+
+auto_converter(MKS)
+print 2.1e+5*Mpa
+
+DEBUT();
+
+#define material --> steel
+MA=DEFI_MATERIAU(ELAS=_F(E=2.1e+11*Pa, # automatically --> 2.1e+5 MPa 
+                         NU=0.3,
+			 RHO=8050*(kg/m**3), # automatically --> 8.05e-09 T/mm**3
+			 ),
+		);
+...
+
 Supportet Units
 ===============
 
