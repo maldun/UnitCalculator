@@ -70,7 +70,20 @@ class UnitTester(object):
               kN(N) == 1e+3,
               N(kN) == 1e-3)
 
+    def testTimeUnits(self):
 
+        from UnitCalculator import sec, minute, hour
+
+        print("Test time units: ", 
+              hour(hour) == 1.0,
+              minute(hour) == 1/60.0,
+              sec(hour) == 1/3600.0,
+              hour(minute) == 60.0,
+              minute(minute) == 1.0,
+              sec(minute) == 1/60.,
+              hour(sec) == 3600.0,
+              minute(sec) == 60.0,
+              sec(sec) == 1.0)
 
     def __init__(self):
 
@@ -78,6 +91,7 @@ class UnitTester(object):
         self.testMassUnits()
         self.testPressureUnits()
         self.testForceUnits()
+        self.testTimeUnits()
         
         
 

@@ -133,7 +133,7 @@ N = NewtonUnit()
 # time
 sec = SecondUnit()
 minute = SecondUnit(60.)
-hours = SecondUnit((60.**2)) 
+hour = SecondUnit((60.**2)) 
 
 # radiant
 from math import pi
