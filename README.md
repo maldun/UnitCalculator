@@ -60,6 +60,9 @@ In [12]: N/m**2 # Since Version 0.2 direct algebra use is also supported
 
 Out[12]: 1e-06
 
+In [13]: gramm = KiloGrammUnit(1e-3) # Easy (re)definition of units
+
+
 In fact the commands kg(), kg(T), m() etc. only return the conversion factors between two units,
 so don't forget the multiplication symbol!
 
@@ -73,6 +76,75 @@ import sys
 sys.path.append(os.path.expanduser("~"))
 
 from UnitCalculator import *
+
+Supportet Units
+===============
+
+Metric: km, m, dm, cm, mm
+Mass: T, kg, g
+Pressure: Pa, MPa
+Force: kN, N
+Time: sec, minute, hour
+Radiant: rad, grad
+Temperature: degK, degC
+Power: W, mW
+Energy: J, mJ
+
+Predefined Unit Sets
+====================
+
+class SystemeInternationale(UnitSystem): # SI
+    """
+    Container class for SI units
+    """
+    def __init__(self):
+        
+        self._distance = m
+        self._mass = kg
+        self._pressure = Pa 
+        self._force = N
+        self._time = sec
+        self._radiant = rad
+        self._temperature = degK
+        self._power = W
+        self._energy = J
+
+class MeterKilogrammSec(UnitSystem): # MKS
+    """
+    Container class for SI units 
+    in Meter Kilogramm and Seconds,
+    but with Degree in Celsius
+    """
+    def __init__(self):
+        
+        self._distance = m
+        self._mass = kg
+        self._pressure = Pa 
+        self._force = N
+        self._time = sec
+        self._radiant = rad
+        self._temperature = degC
+        self._power = W
+        self._energy = J
+
+
+class MilimiterAndTon(UnitSystem): # mmNS
+    """
+    Container class for SI units
+    with distance in mm and
+    mass in tons
+    """
+    def __init__(self):
+        
+        self._distance = mm
+        self._mass = T
+        self._pressure = MPa 
+        self._force = N
+        self._time = sec
+        self._radiant = rad
+        self._temperature = degC
+        self._power = mW
+        self._energy = mJ
 
 
 License
