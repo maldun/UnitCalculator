@@ -138,7 +138,7 @@ hour = SecondUnit((60.**2))
 # radiant
 from math import pi
 rad = RadiantUnit()
-deg = RadiantUnit(pi/180.)
+grad = RadiantUnit(pi/180.)
 
 # temperature
 degK = KelvinUnit()

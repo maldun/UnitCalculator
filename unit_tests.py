@@ -85,14 +85,65 @@ class UnitTester(object):
               minute(sec) == 60.0,
               sec(sec) == 1.0)
 
+    def testRadiantUnits(self):
+
+        from UnitCalculator import rad, grad
+
+        from math import pi
+
+        print("Test radiant units: ",
+              rad(rad) == 1.0,
+              rad(grad) == 180.0/pi,
+              grad(grad) == 1.0,
+              grad(rad) == pi/180.,
+              )
+              
+
+    def testTemperatureUnits(self):
+        
+        from UnitCalculator import degK, degC
+
+        print("Test temperature units: ",
+              degC(degK) == 1.0,
+              degK(degC) == 1.0,
+              degC(degC) == 1.0,
+              degK(degK) == 1.0,
+              )
+
+    def testPowerUnits(self):
+
+        from UnitCalculator import W,mW
+
+        print("Test power Units: ",
+              W(W) == 1.0,
+              W(mW) == 1000.0,
+              mW(W) == 1e-3,
+              mW(mW) == 1.0,
+              )
+
+    def testEnergyUnits(self):
+
+        from UnitCalculator import J, mJ
+
+        print("Test energy Units: ",
+              J(J) == 1.0,
+              J(mJ) == 1000.0,
+              mJ(J) == 1e-3,
+              mJ(mJ) == 1.0,
+              )
+
+
     def __init__(self):
 
+        print("Test Conversion factors: ")
         self.testMetricUnits()
         self.testMassUnits()
         self.testPressureUnits()
         self.testForceUnits()
         self.testTimeUnits()
-        
-        
+        self.testRadiantUnits()
+        self.testTemperatureUnits()
+        self.testPowerUnits()
+        self.testEnergyUnits()
 
 UnitTester()
