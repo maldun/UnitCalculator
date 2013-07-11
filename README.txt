@@ -224,8 +224,10 @@ class MilimeterAndTon(UnitSystem): # mmNS
 mmNS = MilimeterAndTon() # now it can be used by auto_converter with auto_converter(mmNS)
 
 Feel free to add your unit systems and units to the UnitCalculator.py file and
-push them to my repo on github! This way we could create a quite good collection of frequently used units and unit systems!
-If possible incorporate also unit tests in unit_tests.py to ensure that the newly created units work correctly! 
+push them to my repo on github! This way we could create a quite good collection of frequently 
+used units and unit systems!
+If possible incorporate also unit tests in unit_tests.py to ensure that the newly 
+created units work correctly! 
 
 License
 =======
