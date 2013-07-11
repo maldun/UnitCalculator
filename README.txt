@@ -174,6 +174,55 @@ class MilimiterAndTon(UnitSystem): # mmNS
         self._power = mW
         self._energy = mJ
 
+Custom Units and Unitsets
+=========================
+
+To Create your own units, e.g. to create
+micrometer, simply add 
+
+mum = MeterUnit(1e-6) # Example for µm unit
+
+What is this? MeterUnit is the Unit base class for
+length units, where the standard unit is meter. The
+factor 1e-6 is the conversion factor to meter (1 µm = 1e-6 m).
+
+another example for foot:
+
+ft = MeterUnit(0.3048)
+
+You can also define a whole new base unit. 
+For example use foot as new Unit base for lengths add
+
+class FootUnit(PhysicalUnit):
+      pass
+
+Then you can define other units which use foot as base e.g.:
+
+ft = FootUnit() # Base unit
+yard = FootUnit(3.0) # Derived unit
+
+To define a new Unit set add it like:
+
+class MilimiterAndTon(UnitSystem): # mmNS
+    """
+    Container class for SI units
+    with distance in mm and
+    mass in tons
+    """
+    def __init__(self):
+        
+        self._distance = mm
+        self._mass = T
+        self._pressure = MPa 
+        self._force = N
+        self._time = sec
+        self._radiant = rad
+        self._temperature = degC
+        self._power = mW
+        self._energy = mJ
+
+Feel free to add your unit systems and units to the UnitCalculator.py file and
+push them to my repo on github!
 
 License
 =======
