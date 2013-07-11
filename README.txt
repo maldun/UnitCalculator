@@ -66,6 +66,9 @@ In [14]: 8050*(kg/m**3) # Converts density of steel from kg/m^3 to T/mm^3 since 
 
 Out[14]: 8.05e-09
 
+In [15]: degK.convertWithOrigin(0.0) #To convert temperature with considering the origin of the scale
+
+Out[15]: -273.15
 
 
 In fact the commands kg(), kg(T), m() etc. only return the conversion factors between two units,
