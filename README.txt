@@ -156,7 +156,7 @@ class MeterKilogrammSec(UnitSystem): # MKS
         self._energy = J
 
 
-class MilimiterAndTon(UnitSystem): # mmNS
+class MilimeterAndTon(UnitSystem): # mmNS
     """
     Container class for SI units
     with distance in mm and
@@ -203,7 +203,7 @@ yard = FootUnit(3.0) # Derived unit
 
 To define a new Unit set add it like:
 
-class MilimiterAndTon(UnitSystem): # mmNS
+class MilimeterAndTon(UnitSystem): # mmNS
     """
     Container class for SI units
     with distance in mm and
@@ -220,6 +220,8 @@ class MilimiterAndTon(UnitSystem): # mmNS
         self._temperature = degC
         self._power = mW
         self._energy = mJ
+
+mmNS = MilimeterAndTon() # now it can be used by auto_converter with auto_converter(mmNS)
 
 Feel free to add your unit systems and units to the UnitCalculator.py file and
 push them to my repo on github!

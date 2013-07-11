@@ -159,6 +159,7 @@ class JouleUnit(PhysicalUnit):
     """
     Unit for energy in Joule 
     """
+    pass
 
 # declare units
 
@@ -274,7 +275,7 @@ class MeterKilogrammSec(UnitSystem):
         self._energy = J
 
 
-class MilimiterAndTon(UnitSystem):
+class MilimeterAndTon(UnitSystem):
     """
     Container class for SI units
     with distance in mm and
@@ -347,7 +348,7 @@ class UnitAutoConverter(object):
     
 SI = SystemeInternationale()
 MKS = MeterKilogrammSec()
-mmNS = MilimiterAndTon()
+mmNS = MilimeterAndTon()
 
 auto_converter = UnitAutoConverter(MKS) # Default autoconversion
 
