@@ -158,6 +158,74 @@ class UnitTester(object):
               )
 
 
+    def testAutoConversionMKS(self):
+        
+        from UnitCalculator import *
+
+        auto_converter(MKS)
+
+        print("Test autoconversion to MKS: ",
+              kg() == 1.0,
+              km() == 1000.0,
+              sec() == 1.0,
+              W() == 1.0,
+              mJ() == 1e-3,
+              Pa() == 1.0,
+              rad() == 1.0,
+              degC() == 1.0,
+              degC.convertWithOrigin(0.0) == 0.0,
+              )
+
+    def testAutoConversionSI(self):
+        
+        from UnitCalculator import *
+
+        auto_converter(SI)
+
+        print("Test autoconversion to SI: ",
+              kg() == 1.0,
+              km() == 1000.0,
+              sec() == 1.0,
+              W() == 1.0,
+              mJ() == 1e-3,
+              Pa() == 1.0,
+              rad() == 1.0,
+              degC() == 1.0,
+              degC.convertWithOrigin(0.0) == 273.15,
+              )
+
+    def testAutoConversionmmNS(self):
+        
+        from UnitCalculator import *
+
+        auto_converter(mmNS)
+
+        print("Test autoconversion to mmNS: ",
+              kg() == 1e-3,
+              km() == 1000000.0,
+              sec() == 1.0,
+              W() == 1000.0,
+              mJ() == 1.0,
+              Pa() == 1e-6,
+              rad() == 1.0,
+              degC() == 1.0,
+              degC.convertWithOrigin(0.0) == 0.0,
+              )
+
+    def testAlgebra(self):
+
+        from UnitCalculator import *
+
+        auto_converter(mmNS)
+
+        print("Test conversion algebra: ",
+              8.000*kg()/(m()**3) == 8.000*kg/m**3,
+              5*kN()*m() == 5*kN*m,
+              2*km()/hour() == 2*km/hour,
+              km()/hour() == km/hour
+              )
+
+
     def __init__(self):
 
         print("Test Conversion factors: ")
@@ -170,5 +238,9 @@ class UnitTester(object):
         self.testTemperatureUnits()
         self.testPowerUnits()
         self.testEnergyUnits()
+        self.testAutoConversionMKS()
+        self.testAutoConversionSI()
+        self.testAutoConversionmmNS()
+        self.testAlgebra()
 
 UnitTester()

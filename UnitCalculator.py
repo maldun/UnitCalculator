@@ -81,7 +81,7 @@ class PhysicalUnit(object):
         Overload division to enable unit algebra. 
         """        
         correct = auto_converter.getCorrectUnit(self)
-        return (self.factor/correct.factor)/other
+        return other/(self.factor/correct.factor)
 
     def __pow__(self,power):
         correct = auto_converter.getCorrectUnit(self)
