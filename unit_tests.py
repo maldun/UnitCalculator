@@ -75,7 +75,7 @@ class UnitTester(object):
 
     def testPressureUnits(self):
         
-        from UnitCalculator import Pa, MPa, bar
+        from UnitCalculator import Pa, MPa, bar, mbar
 
         print("Test pressure units: ",
               Pa(Pa) == 1.0,
@@ -87,6 +87,11 @@ class UnitTester(object):
               bar(bar) == 1.0,
               Pa(bar) == 1e-5,
               MPa(bar) == 1e+1,
+              mbar(mbar) == 1.0,
+              mbar(bar) == 1e-3,
+              mbar(Pa) == 1e+2,
+              mbar(MPa) == 1e-4,
+              Pa(mbar) == 1e-2,
               )
 
     def testForceUnits(self):

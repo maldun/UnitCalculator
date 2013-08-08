@@ -179,6 +179,7 @@ T = KiloGrammUnit(1e+3)
 Pa = PascalUnit()
 MPa = PascalUnit(1e+6)
 bar = PascalUnit(1e+5)
+mbar = PascalUnit(1e+2)
 
 # force
 kN = NewtonUnit(1e+3)
