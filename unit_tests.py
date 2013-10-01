@@ -1,6 +1,6 @@
 # The MIT License (MIT)
 #
-# Copyright (c) 2013 Stefan Reiterer  - stefan.reiterer@magnasteyr.com or maldun.finsterschreck@gmail.com
+# Copyright (c) 2013 Stefan Reiterer  -  maldun.finsterschreck@gmail.com
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
