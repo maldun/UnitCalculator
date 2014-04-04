@@ -89,6 +89,7 @@ Example in .comm file
 =====================
 
 import sys
+import os
 
 # Assuming module is in home directory
 
