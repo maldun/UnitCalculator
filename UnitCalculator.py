@@ -177,6 +177,7 @@ T = KiloGrammUnit(1e+3)
 
 # pressure
 Pa = PascalUnit()
+kPa = PascalUnit(1e+3)
 MPa = PascalUnit(1e+6)
 bar = PascalUnit(1e+5)
 mbar = PascalUnit(1e+2)
